@@ -41,7 +41,15 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-// ── 404 Handler ──
+// ── Base & 404 Handlers ──
+app.get('/', (_req, res) => {
+  res.json({ 
+    message: 'Welcome to the STEM-ED AI LMS API', 
+    status: 'online',
+    endpoints: '/api/health' 
+  });
+});
+
 app.use((_req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
